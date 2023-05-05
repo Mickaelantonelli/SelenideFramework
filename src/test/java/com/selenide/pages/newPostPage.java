@@ -2,7 +2,8 @@ package com.selenide.pages;
 
 import com.codeborne.selenide.Selenide;
 
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.byText;
 
 public class newPostPage {
  

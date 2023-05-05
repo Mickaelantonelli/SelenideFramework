@@ -4,16 +4,24 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import io.qameta.allure.selenide.AllureSelenide;
+
 import com.selenide.pages.homePage;
 import com.selenide.pages.signInPage;
+
 import com.selenide.pages.homeLoggedInPage;
 import com.selenide.pages.newPostPage;
 import com.selenide.pages.personalUserPage;
 import com.selenide.pages.articlePage;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Condition.*;
+import com.codeborne.selenide.logevents.SelenideLogger;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selectors.byAttribute;
+import static com.codeborne.selenide.Selectors.byClassName;
+import static com.codeborne.selenide.Condition.text;
 
 public class addToFavoriteTest {
 
@@ -28,12 +36,12 @@ public class addToFavoriteTest {
 
     @BeforeClass
     public static void setUp(){
-
+    SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     String articleContext = "This is about a Quality Engineer.";
     String articleContent = "I'm writing an article.";
     String articleTags = "This is a tag.";
     String emailAddress = "mickael.antonelli@gmail.com";
-    String password = "Soman21react=";
+    String password = "Soso75018";
 
     home.open();
     home.signInBtn();
@@ -65,7 +73,7 @@ public class addToFavoriteTest {
     $(byClassName("article-preview")).shouldHave(text("No articles are here... yet."));
     $(byAttribute("href", "#settings")).click();
     $(byClassName("btn-outline-danger")).shouldHave(text("Or click here to logout."));
-    $(byClassName("btn-outline-danger")).click();
+    $(byCssSelector("button.btn.btn-outline-danger")).click();
     $(byAttribute("href", "#login"));
     }
 }

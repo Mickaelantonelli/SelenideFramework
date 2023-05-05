@@ -6,16 +6,18 @@ import org.junit.Test;
 
 import com.selenide.pages.homePage;
 import com.selenide.pages.signInPage;
-
+import com.selenide.pages.homeLoggedInPage;
 
 import io.qameta.allure.selenide.AllureSelenide;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.selenide.pages.homeLoggedInPage;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selectors.byAttribute;
+import static com.codeborne.selenide.Selectors.byClassName;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class userLoginTest {
 
@@ -33,7 +35,7 @@ public class userLoginTest {
     @Test
     public void userCanLoginByUsername(){
         String emailAddress = "mickael.antonelli@gmail.com";
-        String password = "Soman21react=";
+        String password = "Soso75018";
         String userName = "Mantonelli";
 
         signIn.setEmailAddress(emailAddress)
@@ -49,7 +51,7 @@ public class userLoginTest {
     public static void tearDown(){
         $(byAttribute("href", "#settings")).click();
         $(byClassName("btn-outline-danger")).shouldHave(text("Or click here to logout."));
-        $(byClassName("btn-outline-danger")).click();
+        $(byCssSelector("button.btn.btn-outline-danger")).click();
         $(byAttribute("href", "#login"));
     }
 }

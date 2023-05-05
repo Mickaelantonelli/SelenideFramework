@@ -2,7 +2,8 @@ package com.selenide.pages;
 
 import com.codeborne.selenide.Selenide;
 
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byTagName;
 
 public class personalUserPage {
  
